@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony Setiawan — Fullstack Developer · Cloud & DevOps Engineer</title>
+<meta name="description" content="Portfolio of Anthony Setiawan, fullstack software developer and cloud & DevOps engineer with 5+ years of experience across enterprise, education, and government sectors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F8FA; --surface:#FFFFFF; --ink:#14212E; --muted:#5A6B7C;
+    --line:#DCE4EB; --accent:#1668C4; --accent-ink:#0F4E96; --accent-soft:#E3EEFB;
+    --ok:#1D8A5F; --shadow:0 1px 2px rgba(20,33,46,.05),0 8px 24px rgba(20,33,46,.06);
+  }
+  [data-theme="dark"]{
+    --bg:#0C141D; --surface:#121D29; --ink:#E8EEF4; --muted:#93A4B5;
+    --line:#22303E; --accent:#4D9BEF; --accent-ink:#7FB8F5; --accent-soft:#10263C;
+    --ok:#3FBF8A; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+  body{
+    font-family:'IBM Plex Sans',system-ui,sans-serif; background:var(--bg); color:var(--ink);
+    line-height:1.6; font-size:16px; transition:background .25s,color .25s;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 24px}
+
+  /* ---------- Nav ---------- */
+  nav{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:60px}
+  .brand{font-family:'Archivo',sans-serif; font-weight:800; font-size:1.05rem; letter-spacing:-.01em; color:var(--ink)}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex; gap:22px; align-items:center}
+  .nav-links a{color:var(--muted); font-size:.9rem; font-weight:500}
+  .nav-links a:hover{color:var(--ink); text-decoration:none}
+  #themeBtn{
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    width:38px; height:38px; border-radius:10px; cursor:pointer; font-size:1rem;
+    display:grid; place-items:center; transition:border-color .2s;
+  }
+  #themeBtn:hover{border-color:var(--accent)}
+  @media(max-width:640px){.nav-links a{display:none}}
+
+  /* ---------- Hero ---------- */
+  header{padding:76px 0 60px; border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--accent); text-transform:uppercase; margin-bottom:18px}
+  h1{font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(2.3rem,6vw,3.6rem); letter-spacing:-.025em; line-height:1.05; margin-bottom:20px}
+  .lede{max-width:640px; color:var(--muted); font-size:1.06rem; margin-bottom:30px}
+  .lede strong{color:var(--ink); font-weight:600}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:44px}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:10px;
+    font-weight:600; font-size:.92rem; border:1px solid transparent; cursor:pointer; transition:transform .15s,box-shadow .15s;
+  }
+  .btn:hover{text-decoration:none; transform:translateY(-1px)}
+  .btn-primary{background:var(--accent); color:#fff}
+  .btn-primary:hover{box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 35%,transparent)}
+  .btn-ghost{border-color:var(--line); color:var(--ink); background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+  .fact{background:var(--surface); padding:18px 20px}
+  .fact b{display:block; font-family:'Archivo',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-.01em}
+  .fact span{font-size:.82rem; color:var(--muted)}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0; border-bottom:1px solid var(--line)}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px}
+  .sec-head h2{font-family:'Archivo',sans-serif; font-weight:700; font-size:1.5rem; letter-spacing:-.02em}
+  .sec-head .tag{font-family:'IBM Plex Mono',monospace; font-size:.75rem; color:var(--muted)}
+
+  /* ---------- Skills ---------- */
+  .skill-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px}
+  .skill-card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px; box-shadow:var(--shadow)}
+  .skill-card h3{font-family:'Archivo',sans-serif; font-size:.95rem; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px}
+  .skill-card h3::before{content:""; width:8px; height:8px; border-radius:2px; background:var(--accent)}
+  .chips{display:flex; flex-wrap:wrap; gap:7px}
+  .chip{font-family:'IBM Plex Mono',monospace; font-size:.74rem; padding:4px 10px; border-radius:6px; background:var(--accent-soft); color:var(--accent-ink)}
+
+  /* ---------- Pipeline timeline (signature) ---------- */
+  .pipeline{position:relative; padding-left:34px}
+  .pipeline::before{content:""; position:absolute; left:10px; top:6px; bottom:6px; width:2px; background:var(--line)}
+  .stage{position:relative; margin-bottom:34px}
+  .stage:last-child{margin-bottom:0}
+  .stage::before{
+    content:""; position:absolute; left:-30px; top:6px; width:14px; height:14px; border-radius:50%;
+    background:var(--surface); border:3px solid var(--accent);
+  }
+  .stage.current::before{background:var(--ok); border-color:var(--ok); box-shadow:0 0 0 5px color-mix(in srgb,var(--ok) 18%,transparent)}
+  .stage-meta{font-family:'IBM Plex Mono',monospace; font-size:.75rem; color:var(--muted); margin-bottom:6px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+  .stage-meta .status{color:var(--ok); font-weight:500}
+  .stage h3{font-family:'Archivo',sans-serif; font-size:1.12rem; font-weight:700; letter-spacing:-.01em}
+  .stage .role{color:var(--muted); font-size:.9rem; margin-bottom:10px}
+  .stage ul{list-style:none; margin:0 0 12px}
+  .stage li{position:relative; padding-left:18px; margin-bottom:6px; font-size:.94rem; color:color-mix(in srgb,var(--ink) 88%,var(--muted))}
+  .stage li::before{content:"▸"; position:absolute; left:0; color:var(--accent); font-size:.8rem; top:2px}
+  .stack{display:flex; flex-wrap:wrap; gap:6px}
+  .stack .chip{background:transparent; border:1px solid var(--line); color:var(--muted)}
+
+  /* ---------- Credentials 3-col ---------- */
+  .cred-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+  .cred-card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px; box-shadow:var(--shadow)}
+  .cred-card h3{font-family:'Archivo',sans-serif; font-size:.95rem; font-weight:600; margin-bottom:16px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; font-size:.78rem}
+  .cred-item{padding:10px 0; border-bottom:1px dashed var(--line)}
+  .cred-item:last-child{border-bottom:none; padding-bottom:0}
+  .cred-item b{display:block; font-size:.92rem; font-weight:600}
+  .cred-item span{font-size:.82rem; color:var(--muted)}
+  .lang-bar{height:5px; border-radius:3px; background:var(--line); margin-top:6px; overflow:hidden}
+  .lang-bar i{display:block; height:100%; background:var(--accent); border-radius:3px}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1.2fr; gap:32px}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+  .contact-links a{
+    display:flex; align-items:center; gap:12px; padding:14px 16px; border:1px solid var(--line);
+    border-radius:12px; margin-bottom:10px; color:var(--ink); background:var(--surface); font-weight:500; font-size:.93rem;
+    transition:border-color .2s;
+  }
+  .contact-links a:hover{border-color:var(--accent); text-decoration:none}
+  .contact-links .ico{width:36px; height:36px; border-radius:9px; background:var(--accent-soft); color:var(--accent-ink); display:grid; place-items:center; font-size:1rem; flex-shrink:0}
+  .contact-links small{display:block; color:var(--muted); font-weight:400; font-size:.78rem}
+  .form-card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:26px; box-shadow:var(--shadow)}
+  .form-card label{display:block; font-size:.82rem; font-weight:600; margin:14px 0 6px}
+  .form-card label:first-of-type{margin-top:0}
+  .form-card input,.form-card textarea{
+    width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px; background:var(--bg);
+    color:var(--ink); font-family:inherit; font-size:.92rem;
+  }
+  .form-card input:focus,.form-card textarea:focus{outline:2px solid var(--accent); outline-offset:0; border-color:transparent}
+  .form-card textarea{resize:vertical; min-height:110px}
+  .form-note{font-size:.78rem; color:var(--muted); margin-top:10px}
+
+  footer{padding:34px 0; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:.84rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" style="text-decoration:none">anthony<span>.</span>setiawan</a>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <p class="eyebrow">Fullstack Software Developer · Cloud Engineer · DevOps</p>
+    <h1>Building scalable web platforms,<br>from code to cloud.</h1>
+    <p class="lede">I'm <strong>Anthony Setiawan</strong>, a fullstack developer with <strong>5+ years of experience</strong> delivering enterprise web applications, SaaS platforms, and CI/CD infrastructure across the enterprise, education, and government sectors — collaborating with international teams from Indonesia to the Netherlands.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/anthony-setiawan-72a369129/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>5+ yrs</b><span>Professional experience</span></div>
+      <div class="fact"><b>6</b><span>Companies, 3 countries</span></div>
+      <div class="fact"><b>Azure AZ-900</b><span>Microsoft certified</span></div>
+      <div class="fact"><b>IELTS 7.0</b><span>English · CEFR C1</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>Technical Skills</h2><span class="tag">// full stack &amp; beyond</span></div>
+    <div class="skill-grid">
+      <div class="skill-card"><h3>Backend</h3><div class="chips">
+        <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Django</span><span class="chip">C# / .NET</span><span class="chip">Node.js</span><span class="chip">RESTful APIs</span><span class="chip">Backend Automation</span>
+      </div></div>
+      <div class="skill-card"><h3>Frontend</h3><div class="chips">
+        <span class="chip">ReactJS</span><span class="chip">JavaScript</span><span class="chip">Vue.js</span><span class="chip">Angular</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">jQuery</span>
+      </div></div>
+      <div class="skill-card"><h3>Cloud &amp; DevOps</h3><div class="chips">
+        <span class="chip">Azure Services</span><span class="chip">Azure DevOps</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">CI/CD Pipelines</span><span class="chip">Bash</span><span class="chip">YAML</span>
+      </div></div>
+      <div class="skill-card"><h3>Databases</h3><div class="chips">
+        <span class="chip">MySQL</span><span class="chip">Microsoft SQL Server</span><span class="chip">PostgreSQL</span>
+      </div></div>
+      <div class="skill-card"><h3>Testing &amp; Quality</h3><div class="chips">
+        <span class="chip">Unit Testing</span><span class="chip">Integration Testing</span><span class="chip">Automated Testing</span><span class="chip">SonarQube</span><span class="chip">BlackDuck</span><span class="chip">Splunk</span>
+      </div></div>
+      <div class="skill-card"><h3>Tools &amp; Practices</h3><div class="chips">
+        <span class="chip">Git</span><span class="chip">Agile Scrum</span><span class="chip">Jira</span><span class="chip">Miro</span><span class="chip">UI Development</span><span class="chip">Team Collaboration</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><h2>Professional Experience</h2><span class="tag">// deployment history</span></div>
+    <div class="pipeline">
+
+      <div class="stage current">
+        <div class="stage-meta"><span>May 2024 — Present</span><span class="status">● running</span></div>
+        <h3>KaiStudio</h3>
+        <p class="role">Business &amp; Technical Consultant · Freelance</p>
+        <ul>
+          <li>Managed post-release operations of a game on a Japanese-exclusive platform, raising user satisfaction by ~20–25% and cutting development &amp; deployment time by 30%.</li>
+          <li>Built in-house performance analysis and debugging tools; ran CI/CD via GitHub Workflows &amp; Actions.</li>
+          <li>Applied generative AI to produce automated game translations that read more naturally than conventional machine translation.</li>
+        </ul>
+        <div class="stack"><span class="chip">RPG Maker MV</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Bash</span><span class="chip">YAML</span><span class="chip">GitHub Actions</span><span class="chip">Gen AI</span></div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-meta"><span>May 2025 — Oct 2025</span></div>
+        <h3>ASUS Holland B.V.</h3>
+        <p class="role">Software Developer · Full-time</p>
+        <ul>
+          <li>Maintained and supported business-critical applications for the EMEA region.</li>
+          <li>Developed Bash/PHP automation scripts improving debugging, error-log analysis, and translation-file processing.</li>
+          <li>Collaborated with IT teams on stability and smooth application delivery via Azure DevOps and Git.</li>
+        </ul>
+        <div class="stack"><span class="chip">PHP</span><span class="chip">Bash</span><span class="chip">Azure DevOps</span><span class="chip">Git</span></div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-meta"><span>Sep 2023 — Mar 2024</span></div>
+        <h3>ASML B.V.</h3>
+        <p class="role">DevOps CI/CD Quality Checker · Graduation Internship (FC DevEnv, D&amp;E)</p>
+        <ul>
+          <li>Built CI/CD pipelines with GitHub Actions and Docker to automate quality checks across repositories.</li>
+          <li>Designed a Splunk dashboard for monitoring results and infrastructure visibility.</li>
+          <li>Applied Bash, Python, and YAML scripting with containerization for automation and testing.</li>
+        </ul>
+        <div class="stack"><span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Splunk</span><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">YAML</span></div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-meta"><span>Nov 2021 — Aug 2022</span></div>
+        <h3>Warna Warni Media Group</h3>
+        <p class="role">Fullstack Developer · Full-time</p>
+        <ul>
+          <li>Designed and developed EATS and ERIS — the company's core employee management SaaS — serving clients across Indonesia and Southeast Asia.</li>
+          <li>Built websites for branch businesses with a focus on seamless functionality and user experience.</li>
+        </ul>
+        <div class="stack"><span class="chip">C# / .NET Core</span><span class="chip">Microservices</span><span class="chip">SQL Server</span><span class="chip">PHP</span><span class="chip">Jira</span></div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-meta"><span>May 2021 — Oct 2021</span></div>
+        <h3>Scomptec Edupersada</h3>
+        <p class="role">Fullstack Developer · Contract</p>
+        <ul>
+          <li>Created full-stack CMS and web portal applications for East Java's Governor, serving large user bases.</li>
+          <li>Built RESTful APIs and backend services with Node.js and Laravel, deployed via GitHub, GitLab, and cloud infrastructure.</li>
+        </ul>
+        <div class="stack"><span class="chip">Laravel</span><span class="chip">Vue.js</span><span class="chip">Angular</span><span class="chip">Python</span><span class="chip">Flutter</span><span class="chip">Azure</span></div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-meta"><span>Sep 2020 — May 2021</span></div>
+        <h3>Renjana Abi Yasa</h3>
+        <p class="role">Fullstack Software Developer · Full-time</p>
+        <ul>
+          <li>Developed an e-learning platform for Indonesia's Ministry of Education, serving millions of students and teachers across all national schools.</li>
+          <li>Played a key role in the most critical development team, ensuring stability, scalability, and performance at national scale.</li>
+        </ul>
+        <div class="stack"><span class="chip">C# / ASP.NET</span><span class="chip">Microservices</span><span class="chip">React Native</span><span class="chip">Vue.js</span><span class="chip">Jenkins</span><span class="chip">GitLab</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <div class="sec-head"><h2>Credentials</h2><span class="tag">// education · certs · languages</span></div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <h3>Education</h3>
+        <div class="cred-item"><b>BSc Computer Science — Double Degree</b><span>Fontys University of Applied Sciences, Netherlands</span></div>
+        <div class="cred-item"><b>BSc Computer Science</b><span>Petra Christian University, Indonesia</span></div>
+      </div>
+      <div class="cred-card">
+        <h3>Certifications</h3>
+        <div class="cred-item"><b>Microsoft Azure AZ-900: Azure Fundamentals</b><span>Microsoft</span></div>
+        <div class="cred-item"><b>UI/UX Certification</b><span>Tokopedia</span></div>
+        <div class="cred-item"><b>SAP01 — Overview</b><span>Edugate</span></div>
+        <div class="cred-item"><b>IELTS 7.0 (CEFR C1)</b><span>IELTS IDP Education Ltd</span></div>
+      </div>
+      <div class="cred-card">
+        <h3>Languages</h3>
+        <div class="cred-item"><b>Indonesian</b><span>Native</span><div class="lang-bar"><i style="width:100%"></i></div></div>
+        <div class="cred-item"><b>English</b><span>Professional · IELTS 7.0 / C1</span><div class="lang-bar"><i style="width:82%"></i></div></div>
+        <div class="cred-item"><b>Japanese</b><span>Basic · JLPT N5</span><div class="lang-bar"><i style="width:22%"></i></div></div>
+        <div class="cred-item"><b>Dutch</b><span>Basic · Learning A0 → A1</span><div class="lang-bar"><i style="width:12%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head"><h2>Get in Touch</h2><span class="tag">// open to remote opportunities</span></div>
+    <div class="contact-grid">
+      <div class="contact-links">
+        <a href="mailto:tonskom@gmail.com"><span class="ico">✉</span><span>Email<small>tonskom@gmail.com</small></span></a>
+        <a href="https://www.linkedin.com/in/anthony-setiawan-72a369129/" target="_blank" rel="noopener"><span class="ico">in</span><span>LinkedIn<small>anthony-setiawan</small></span></a>
+        <a href="tel:+6283830009213"><span class="ico">☎</span><span>Mobile / WhatsApp<small>+62 838 3000 9213</small></span></a>
+      </div>
+      <div class="form-card">
+        <label for="cName">Your name</label>
+        <input id="cName" type="text" placeholder="Jane Doe">
+        <label for="cEmail">Your email</label>
+        <input id="cEmail" type="email" placeholder="jane@company.com">
+        <label for="cMsg">Message</label>
+        <textarea id="cMsg" placeholder="Hi Anthony, we'd like to talk about..."></textarea>
+        <div style="margin-top:16px">
+          <button class="btn btn-primary" onclick="sendMail()" type="button">Send message</button>
+        </div>
+        <p class="form-note">Opens your email app with the message pre-filled — no server required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0 24px">
+    <span>© 2026 Anthony Setiawan</span>
+    <span class="mono" style="font-size:.78rem">build: passing ✓ · deployed on static hosting</span>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle — defaults to system preference
+  const root = document.documentElement, btn = document.getElementById('themeBtn');
+  function setTheme(t){ root.setAttribute('data-theme', t); btn.textContent = t === 'dark' ? '☀️' : '🌙'; }
+  setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  btn.addEventListener('click', () => setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+  // Contact form → mailto (works on any free static host, no backend)
+  function sendMail(){
+    const n = document.getElementById('cName').value.trim();
+    const e = document.getElementById('cEmail').value.trim();
+    const m = document.getElementById('cMsg').value.trim();
+    const body = encodeURIComponent(`${m}\n\n— ${n}${e ? ' (' + e + ')' : ''}`);
+    const subject = encodeURIComponent(`Portfolio inquiry from ${n || 'your website'}`);
+    window.location.href = `mailto:tonskom@gmail.com?subject=${subject}&body=${body}`;
+  }
+</script>
+</body>
+</html>
