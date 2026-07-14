@@ -83,6 +83,22 @@
   .chips{display:flex; flex-wrap:wrap; gap:7px}
   .chip{font-family:'IBM Plex Mono',monospace; font-size:.74rem; padding:4px 10px; border-radius:6px; background:var(--accent-soft); color:var(--accent-ink)}
 
+  /* ---------- Projects ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px}
+  .proj-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:24px;
+    box-shadow:var(--shadow); display:flex; flex-direction:column;
+  }
+  .proj-head{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:4px}
+  .proj-card h3{font-family:'Archivo',sans-serif; font-size:1.12rem; font-weight:700; letter-spacing:-.01em}
+  .proj-status{font-family:'IBM Plex Mono',monospace; font-size:.75rem; color:var(--ok); white-space:nowrap; font-weight:500}
+  .proj-status.building{color:var(--accent)}
+  .proj-card p{color:var(--muted); font-size:.92rem; margin:8px 0 14px}
+  .proj-card p strong{color:var(--ink); font-weight:600}
+  .proj-card .stack{margin-bottom:18px}
+  .proj-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
+  .proj-actions .btn{padding:9px 16px; font-size:.86rem}
+
   /* ---------- Pipeline timeline (signature) ---------- */
   .pipeline{position:relative; padding-left:34px}
   .pipeline::before{content:""; position:absolute; left:10px; top:6px; bottom:6px; width:2px; background:var(--line)}
@@ -145,6 +161,7 @@
   <div class="wrap nav-inner">
     <a class="brand" href="#top" style="text-decoration:none">anthony<span>.</span>setiawan</a>
     <div class="nav-links">
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#credentials">Credentials</a>
@@ -171,6 +188,45 @@
     </div>
   </div>
 </header>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><h2>Projects</h2><span class="tag">// live &amp; in progress</span></div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-head"><h3>AKS GitOps Platform</h3><span class="proj-status building">● building</span></div>
+        <p>
+          A production-grade Kubernetes platform on Azure, from Terraform-provisioned
+          infrastructure to ArgoCD-managed workloads. The entire auth chain is federated —
+          GitHub → Azure via OIDC, AKS → ACR via managed identity, pods via workload
+          identity — so <strong>no secret is stored anywhere</strong>. Design decisions
+          documented ADR-style.
+        </p>
+        <div class="stack"><span class="chip">Terraform</span><span class="chip">AKS</span><span class="chip">ArgoCD</span><span class="chip">GitHub Actions</span><span class="chip">OIDC</span></div>
+        <div class="proj-actions">
+          <a class="btn btn-ghost" href="https://github.com/phantorios/azure-aks-platform" target="_blank" rel="noopener">Repository ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><h3>Idle RPG Prototype</h3><span class="proj-status">● live</span></div>
+        <p>
+          A playable idle/clicker RPG — tap combat, exponential upgrade economies, and
+          boss progression — built as a <strong>single dependency-free HTML file</strong>
+          with a live balance-tuning panel for experimenting with the genre's growth curves.
+          Deployed as a static page.
+        </p>
+        <div class="stack"><span class="chip">Vanilla JS</span><span class="chip">HTML5</span><span class="chip">GitHub Pages</span><span class="chip">Game Balance</span></div>
+        <div class="proj-actions">
+          <a class="btn btn-primary" href="/idle-rpg-game/">▶ Play the demo</a>
+          <a class="btn btn-ghost" href="https://github.com/phantorios/idle-rpg-game" target="_blank" rel="noopener">Repository ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section id="skills">
   <div class="wrap">
